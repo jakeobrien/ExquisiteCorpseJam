@@ -41,6 +41,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 448652}
+  - 114: {fileID: 11451622}
+  - 114: {fileID: 11461526}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -74,7 +76,6 @@ GameObject:
   - 4: {fileID: 458334}
   - 58: {fileID: 5861020}
   - 50: {fileID: 5073244}
-  - 114: {fileID: 11445712}
   m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
@@ -266,12 +267,12 @@ MonoBehaviour:
   layersToGrab:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11445712
+--- !u!114 &11451622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178256}
+  m_GameObject: {fileID: 144954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 606b48b678bd04badacdaad80030cb02, type: 3}
@@ -280,8 +281,30 @@ MonoBehaviour:
   wheel: {fileID: 23548272}
   slider: {fileID: 23487586}
   grabber: {fileID: 11420764}
-  armRotationSpeed: 500
-  armExtensionDistance: 3
+  armRotationSpeed: 700
+  armExtensionDistance: 5
+  input: {fileID: 11461526}
+--- !u!114 &11461526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787f164ec933940f880cec12754548ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  keyboard:
+    armRotateLeft: 97
+    armRotateRight: 115
+    armExtend: 119
+    grab: 32
+  joystick:
+    armRotate: LH1
+    armExtend: A1
+    grab: RT1
 --- !u!212 &21238236
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -349,7 +372,7 @@ SliderJoint2D:
   m_Angle: 0
   m_UseMotor: 0
   m_Motor:
-    m_MotorSpeed: 100
+    m_MotorSpeed: 200
     m_MaximumMotorForce: 2000
   m_UseLimits: 0
   m_TranslationLimits:

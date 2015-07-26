@@ -9,6 +9,8 @@ public class Player : MonoBehavclops
     public Grabber grabber;
     public float armRotationSpeed;
     public float armExtensionDistance;
+    public PlayerInput input;
+
 
     public void Update()
     {
@@ -20,7 +22,7 @@ public class Player : MonoBehavclops
     private void DoSlider()
     {
         var limits = slider.limits;
-        if (Input.GetKey(KeyCode.W)) {
+        if (input.ArmExtend) {
             slider.useMotor = true;
             limits.max = armExtensionDistance;
         } else {
@@ -33,19 +35,13 @@ public class Player : MonoBehavclops
     private void DoWheel()
     {
         var motor = wheel.motor;
-        if (Input.GetKey(KeyCode.A)) {
-            motor.motorSpeed = -armRotationSpeed;
-        } else if (Input.GetKey(KeyCode.S)) {
-            motor.motorSpeed = armRotationSpeed;
-        } else {
-            motor.motorSpeed = 0f;
-        }
+        motor.motorSpeed = input.ArmRotate * armRotationSpeed;
         wheel.motor = motor;
     }
 
     private void DoGrabber()
     {
-        grabber.ShouldGrab = Input.GetKey(KeyCode.Space);
+        grabber.ShouldGrab = input.Grab;
     }
 
 }
