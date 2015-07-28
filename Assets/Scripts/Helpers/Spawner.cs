@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Spawner : MonoBehaviour
@@ -24,6 +25,12 @@ public class Spawner : MonoBehaviour
     [HideInInspector]
     public bool spawningEnabled = true;
     public SpawnItem[] spawnItems;
+	[Tooltip("How long the spawner will be active")]
+	public float spawnTime = 60.9f;
+	[Tooltip("X and Y range from spawner objects will appear")]
+	public Vector2 spawnExtents = new Vector2(0, 0);
+	[Tooltip("UI text object that is the timer")]
+    public Text textTimer;
 
     protected bool _hasStarted;
 
@@ -40,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     protected virtual Vector3? GetSpawnPosition() 
     {
-        return transform.position; 
+		return transform.position + new Vector3(Random.Range(-spawnExtents.x, spawnExtents.x), Random.Range(-spawnExtents.y, spawnExtents.y), 0);
     }
 
     protected virtual void ConfigureSpawn(GameObject spawn) { }
@@ -90,6 +97,14 @@ public class Spawner : MonoBehaviour
         if (autoStart) StartSpawning();
     }
 
+    private void Update()
+    {
+		System.TimeSpan t = System.TimeSpan.FromSeconds( spawnTime );
+		textTimer.text = string.Format("{0:D1}:{1:D2}", t.Minutes, t.Seconds);
+
+		spawnTime -= Time.deltaTime;
+    }
+
     private void NormalizeSpawnItemWeights()
     {
         if (spawnItems == null || spawnItems.Length == 0) return;
@@ -105,7 +120,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnPeriodically()
     {
-        while (true) {
+		while (spawnTime > 0) {
             yield return new WaitForSeconds(1f / GetVariedFrequency());
             if(spawningEnabled && CanSpawn()) Spawn();
         }
