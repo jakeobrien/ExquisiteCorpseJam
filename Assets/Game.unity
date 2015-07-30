@@ -160,7 +160,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &24504603
 Transform:
   m_ObjectHideFlags: 0
@@ -196,7 +195,7 @@ GameObject:
   - 4: {fileID: 26814363}
   - 212: {fileID: 26814365}
   - 61: {fileID: 26814364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +322,7 @@ MonoBehaviour:
   wheel: {fileID: 866165571}
   slider: {fileID: 1894437020}
   grabber: {fileID: 1894437019}
-  armRotationSpeed: 700
+  armRotationSpeed: 500
   armExtensionDistance: 5
   input: {fileID: 78177314}
 --- !u!1 &144632242
@@ -336,7 +335,7 @@ GameObject:
   - 4: {fileID: 144632243}
   - 212: {fileID: 144632245}
   - 61: {fileID: 144632244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +403,7 @@ GameObject:
   - 4: {fileID: 341243263}
   - 212: {fileID: 341243265}
   - 61: {fileID: 341243264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +471,7 @@ GameObject:
   - 4: {fileID: 399230282}
   - 212: {fileID: 399230284}
   - 58: {fileID: 399230283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +540,7 @@ GameObject:
   - 4: {fileID: 521960278}
   - 212: {fileID: 521960277}
   - 61: {fileID: 521960276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +617,6 @@ GameObject:
   m_IsActive: 1
 --- !u!50 &554974132
 Rigidbody2D:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5073244, guid: 26ca9b6b2e1a74984b83c32c8647fd9f,
     type: 2}
@@ -628,11 +626,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .300000012
   m_GravityScale: .5
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &554974133
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -671,7 +669,7 @@ GameObject:
   - 212: {fileID: 580648665}
   - 61: {fileID: 580648664}
   - 114: {fileID: 580648663}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ScoreZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +784,6 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &586373333
 MonoBehaviour:
@@ -890,7 +887,7 @@ GameObject:
   - 4: {fileID: 689105681}
   - 212: {fileID: 689105683}
   - 61: {fileID: 689105682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +955,7 @@ GameObject:
   - 4: {fileID: 786393762}
   - 212: {fileID: 786393764}
   - 61: {fileID: 786393763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1021,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 855946253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Placeholder world
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,7 +1075,6 @@ Transform:
   m_RootOrder: 1
 --- !u!50 &866165570
 Rigidbody2D:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5081190, guid: 26ca9b6b2e1a74984b83c32c8647fd9f,
     type: 2}
@@ -1088,11 +1084,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
+  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!235 &866165571
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -1101,7 +1097,7 @@ WheelJoint2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866165568}
   m_Enabled: 1
-  m_EnableCollision: 0
+  m_CollideConnected: 0
   m_ConnectedRigidBody: {fileID: 554974132}
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
@@ -1124,7 +1120,7 @@ GameObject:
   - 4: {fileID: 886831005}
   - 212: {fileID: 886831007}
   - 61: {fileID: 886831006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,7 +1294,7 @@ GameObject:
   - 4: {fileID: 1148221761}
   - 212: {fileID: 1148221763}
   - 61: {fileID: 1148221762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1362,7 @@ GameObject:
   - 4: {fileID: 1192286574}
   - 212: {fileID: 1192286576}
   - 61: {fileID: 1192286575}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1430,7 @@ GameObject:
   - 4: {fileID: 1202559095}
   - 212: {fileID: 1202559097}
   - 58: {fileID: 1202559096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ball (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1503,7 +1499,7 @@ GameObject:
   - 4: {fileID: 1237850334}
   - 212: {fileID: 1237850333}
   - 61: {fileID: 1237850332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1627,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1459162938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1673,7 +1669,7 @@ GameObject:
   - 4: {fileID: 1552488368}
   - 212: {fileID: 1552488370}
   - 61: {fileID: 1552488369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1737,7 @@ GameObject:
   - 4: {fileID: 1580106285}
   - 212: {fileID: 1580106287}
   - 61: {fileID: 1580106286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,7 +1805,7 @@ GameObject:
   - 4: {fileID: 1617998015}
   - 212: {fileID: 1617998017}
   - 61: {fileID: 1617998016}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1875,7 +1871,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1660724958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1999,7 +1995,7 @@ GameObject:
   - 212: {fileID: 1856944869}
   - 61: {fileID: 1856944868}
   - 114: {fileID: 1856944867}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ScoreZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layersToGrab:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1024
 --- !u!234 &1894437020
 SliderJoint2D:
   m_ObjectHideFlags: 0
@@ -2178,7 +2174,7 @@ SliderJoint2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894437017}
   m_Enabled: 1
-  m_EnableCollision: 0
+  m_CollideConnected: 0
   m_ConnectedRigidBody: {fileID: 866165570}
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -1.75, y: 0}
@@ -2208,7 +2204,6 @@ CircleCollider2D:
   m_Radius: 1
 --- !u!50 &1894437022
 Rigidbody2D:
-  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5046214, guid: 26ca9b6b2e1a74984b83c32c8647fd9f,
     type: 2}
@@ -2218,11 +2213,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
+  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!1 &2062284033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2228,7 @@ GameObject:
   - 4: {fileID: 2062284034}
   - 212: {fileID: 2062284036}
   - 58: {fileID: 2062284035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2302,7 +2297,7 @@ GameObject:
   - 4: {fileID: 2102212131}
   - 212: {fileID: 2102212133}
   - 61: {fileID: 2102212132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: block (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
