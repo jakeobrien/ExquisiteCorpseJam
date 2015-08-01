@@ -7,10 +7,15 @@ public class Player : MonoBehavclops
     public WheelJoint2D wheel;
     public SliderJoint2D slider;
     public Grabber grabber;
-    public float armRotationSpeed;
-    public float armExtensionDistance;
     public PlayerInput input;
 
+    public float armRotationSpeed;
+    public float armExtensionDistance;
+    public float grabDelay;
+    public float retractionDelay;
+
+    private bool _isExtended;
+    private bool _isGrabbing;
 
     public void Update()
     {
@@ -21,15 +26,11 @@ public class Player : MonoBehavclops
 
     private void DoSlider()
     {
-        var limits = slider.limits;
-        if (input.ArmExtend) {
-            slider.useMotor = true;
-            limits.max = armExtensionDistance;
-        } else {
-            slider.useMotor = true;
-            limits.max = 2f;
+        if (input.ArmExtend && !_isExtended ) 
+        {
+            _isExtended = true;
+            StartCoroutine( StartRetractArm() );
         }
-        slider.limits = limits;
     }
 
     private void DoWheel()
@@ -41,7 +42,27 @@ public class Player : MonoBehavclops
 
     private void DoGrabber()
     {
-        grabber.ShouldGrab = input.Grab;
+        //grabber.ShouldGrab = input.Grab;
+        grabber.ShouldGrab = _isExtended;
     }
+    
+    private IEnumerator StartRetractArm()
+    {
+        var limits = slider.limits;
 
+        slider.useMotor = true;
+        limits.max = armExtensionDistance;
+        _isGrabbing = true;
+        slider.limits = limits;
+
+        yield return new WaitForSeconds( grabDelay );
+
+        _isGrabbing = false;
+
+        yield return new WaitForSeconds( retractionDelay );
+        _isExtended = false;
+
+        limits.max = 2f;
+        slider.limits = limits;
+    }
 }

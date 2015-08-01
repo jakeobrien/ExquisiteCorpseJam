@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmoothFollowCamera : MonoBehaviour {
-	
+public class SmoothFollowCamera : MonoBehaviour 
+{
 	public Transform target;
+    public float lerpSpeed;
+
 	Transform t;
 
 	// Use this for initialization
@@ -12,9 +14,10 @@ public class SmoothFollowCamera : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () 
+    {
 		Vector3 tpos = target.position;
 		tpos.z = t.position.z;
-		t.position = Vector3.Lerp( t.position, tpos, Time.deltaTime );
+		t.position = Vector3.Lerp( t.position, tpos, lerpSpeed * Time.deltaTime );
 	}
 }

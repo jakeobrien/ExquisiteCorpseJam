@@ -66,7 +66,7 @@ public class PlayerInput : MonoBehaviour
         } else {
             _armRotate = 0f;
         }
-        _armExtend = Input.GetKey(keyboard.armExtend);
+        _armExtend = Input.GetKeyDown(keyboard.armExtend);
         _grab = Input.GetKey(keyboard.grab);
     }
 
