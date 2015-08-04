@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Ball : AmBehaviour 
 {
+    public int colorValue;
     public CircleCollider2D collider;
     public float pushStrength = 5f;
 
