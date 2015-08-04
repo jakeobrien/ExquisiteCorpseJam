@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5b6fccef47c4f3ebc61b75493dfa04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorValue: 3
   collider: {fileID: 5815228}
   pushStrength: 500
   maxRings: 8

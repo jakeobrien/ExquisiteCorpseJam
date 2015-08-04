@@ -20,11 +20,13 @@ public class BallHolder : AmBehaviour
     void OnEnable()
     {
         _gameplaySettings.OnArmExtended += OnArmExtended;
+        _gameplaySettings.OnBallDestroyed += OnBallDestroyed;
     }
 
     void OnDisable()
     {
         _gameplaySettings.OnArmExtended -= OnArmExtended;
+        _gameplaySettings.OnBallDestroyed -= OnBallDestroyed;
     }
 
     void OnCollisionEnter2D( Collision2D col )
@@ -36,10 +38,16 @@ public class BallHolder : AmBehaviour
         _balls.Add( ball );
     }
 
+    // Events ==================================================
     public void OnArmExtended()
     {
         Vector3 direction = player.GetDirectionAwayFromArm();
         rb2D.AddForce( direction * basePush * (1+_balls.Count), ForceMode2D.Impulse );
         Debug.DrawRay( transform.position, direction * basePush * (1+_balls.Count), Color.red, 1f );
+    }
+
+    public void OnBallDestroyed( Ball ball )
+    {
+        if ( _balls.Contains( ball ) ) _balls.Remove( ball );
     }
 }

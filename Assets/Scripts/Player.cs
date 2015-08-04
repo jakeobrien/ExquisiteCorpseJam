@@ -6,6 +6,7 @@ public class Player : MonoBehavclops
     public WheelJoint2D wheel;
     public SliderJoint2D slider;
     public Transform body;
+    public Renderer bodyRenderer;
     public Grabber grabber;
     public PlayerInput input;
 

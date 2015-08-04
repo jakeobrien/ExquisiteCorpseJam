@@ -22,6 +22,11 @@ public class Ball : AmBehaviour
         _gameplaySettings.OnArmExtended -= OnArmExtended;
     }
 
+    void OnDestroy()
+    {
+        _gameplaySettings.ReportBallDestroyed( this );
+    }
+
     void FixedUpdate()
     {
         if ( _playerTransform == null ) return;

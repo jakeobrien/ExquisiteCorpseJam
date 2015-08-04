@@ -32,6 +32,8 @@ public class Spawner : MonoBehaviour
 	[Tooltip("UI text object that is the timer")]
     public Text textTimer;
 
+    public Player player;
+
     protected bool _hasStarted;
 
     //=================================
@@ -99,6 +101,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if ( !player.bodyRenderer.isVisible ) return;
 		System.TimeSpan t = System.TimeSpan.FromSeconds( spawnTime );
 		textTimer.text = string.Format("{0:D1}:{1:D2}", t.Minutes, t.Seconds);
 
