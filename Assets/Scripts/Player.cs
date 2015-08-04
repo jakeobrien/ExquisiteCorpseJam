@@ -43,7 +43,7 @@ public class Player : MonoBehavclops
     private void DoGrabber()
     {
         //grabber.ShouldGrab = input.Grab;
-        grabber.ShouldGrab = _isExtended;
+        grabber.ShouldGrab = _isGrabbing;
     }
     
     private IEnumerator StartRetractArm()

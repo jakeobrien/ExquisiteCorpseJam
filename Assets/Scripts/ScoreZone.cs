@@ -8,24 +8,24 @@ public class ScoreZone : MonoBehaviour {
 	public Transform scoreEffect;
 	public Transform penaltyEffect;
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnCollisionEnter2D(Collision2D other) {
 
-		if(other.attachedRigidbody.gameObject.tag == scoreTag) {
-			Debug.Log("SCORED!");
+		if(other.transform.gameObject.tag == scoreTag) {
+			//Debug.Log("SCORED!");
 			ScoreManager.Score();
 			
 			if ( scoreEffect )
-				Instantiate( scoreEffect, other.attachedRigidbody.GetComponent<Transform>().position, Quaternion.identity );
+				Instantiate( scoreEffect, other.transform.position, Quaternion.identity );
 	
-			Destroy( other.attachedRigidbody.gameObject );
-		} else  if ( other.attachedRigidbody.gameObject.tag != "Player" ) {
-			Debug.Log("PENALTY");
+			Destroy( other.transform.gameObject );
+		} else  if ( other.transform.gameObject.tag != "Player" ) {
+			//Debug.Log("PENALTY");
 			ScoreManager.Penalty();
 			
 			if ( penaltyEffect )
-				Instantiate( penaltyEffect, other.attachedRigidbody.GetComponent<Transform>().position, Quaternion.identity );
+				Instantiate( penaltyEffect, other.transform.position, Quaternion.identity );
 
-			Destroy( other.attachedRigidbody.gameObject );
+			Destroy( other.transform.gameObject );
 		}
 
     }

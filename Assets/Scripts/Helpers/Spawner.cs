@@ -104,6 +104,12 @@ public class Spawner : MonoBehaviour
 
 		spawnTime -= Time.deltaTime;
     }
+    
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube( transform.position, spawnExtents * 2f);
+    }
 
     private void NormalizeSpawnItemWeights()
     {
