@@ -3,8 +3,16 @@ using System.Collections;
 
 public class Rotator : MonoBehaviour 
 {
+    public float initialRotateSpeed;
+
     private float _currentSpeed;
     private int _direction;
+
+    void Awake()
+    {
+        SetRandomDirection();
+        SetSpeed( initialRotateSpeed );
+    }
 
     void Update()
     {

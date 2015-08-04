@@ -1,49 +1,66 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ball : MonoBehaviour 
+public class Ball : AmBehaviour 
 {
+    public CircleCollider2D collider;
+    public float pushStrength = 5f;
+
     public int maxRings;
     private int _ring;
-    private Rigidbody2D _rb;
+    private Player _player;
     private Transform _playerTransform;
 
-    void Awake()
+    void OnEnable()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _gameplaySettings.OnArmExtended += OnArmExtended;
+    }
+
+    void OnDisable()
+    {
+        _gameplaySettings.OnArmExtended -= OnArmExtended;
     }
 
     void FixedUpdate()
     {
         if ( _playerTransform == null ) return;
         MoveTowardPlayer();
+
     }
 
-    /*
-    void OnCollisionEnter2D( Collision2D col )
+    // Main Functions ==================================================
+    public bool IsStickingToPlayer()
     {
-        Ball ball = col.transform.GetComponent<Ball>();
-        if ( ball == null || ball.IsStickingToPlayer() ) return;
-
-        ball.StickToPlayer( this.transform );
+        return _playerTransform != null;
     }
-    */
+
     private void MoveTowardPlayer()
     {
-        float playerRadius = _playerTransform.GetComponent<CircleCollider2D>().radius * 2.5f ;
+        float playerRadius = _playerTransform.GetComponent<CircleCollider2D>().radius * 3f ;
         Vector3 attachmentPoint = _playerTransform.position + ( transform.position - _playerTransform.position ).normalized * playerRadius;
 
         Vector3 direction = ( attachmentPoint - transform.position );
-        _rb.AddForce( direction, ForceMode2D.Impulse );
+        rb2D.AddForce( direction, ForceMode2D.Impulse );
+    }
+
+    private void PushAwayFromArm()
+    {
+        if ( _player == null ) return;
+        Vector3 directionOppositeArm = _player.GetDirectionAwayFromArm();
+        rb2D.AddForce( directionOppositeArm * pushStrength, ForceMode2D.Impulse );
+        Debug.Log("Hello?");
     }
 
     public void StickToPlayer( Transform playerTransform )
     {
+        _player = playerTransform.GetComponent<Player>();
         _playerTransform = playerTransform; 
     }
 
-    public bool IsStickingToPlayer()
+
+    // Events ==================================================
+    public void OnArmExtended()
     {
-        return _playerTransform != null;
+        PushAwayFromArm();    
     }
 }

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Player : MonoBehavclops
 {
-
     public WheelJoint2D wheel;
     public SliderJoint2D slider;
+    public Transform body;
     public Grabber grabber;
     public PlayerInput input;
 
@@ -46,6 +46,11 @@ public class Player : MonoBehavclops
         grabber.ShouldGrab = _isGrabbing;
     }
     
+    public Vector3 GetDirectionAwayFromArm()
+    {
+        return ( body.transform.position - grabber.transform.position ).normalized;
+    }
+
     private IEnumerator StartRetractArm()
     {
         var limits = slider.limits;
@@ -54,6 +59,7 @@ public class Player : MonoBehavclops
         limits.max = armExtensionDistance;
         _isGrabbing = true;
         slider.limits = limits;
+        GameplaySettings.Instance.ReportArmExtended();
 
         yield return new WaitForSeconds( grabDelay );
 
