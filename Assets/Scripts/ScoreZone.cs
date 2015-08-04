@@ -50,7 +50,11 @@ public class ScoreZone : MonoBehaviour
 
     private void CheckDeath()
     {
-        if ( _currentHitPoints <= 0 ) Destroy( this.gameObject );
+        if ( _currentHitPoints <= 0 ) 
+        {
+            Destroy( this.gameObject );
+            ScoreManager.SetScore( 0 );
+        }
     }
 
     private void RemoveHitPoint()

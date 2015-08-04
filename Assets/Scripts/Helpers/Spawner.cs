@@ -33,6 +33,7 @@ public class Spawner : MonoBehaviour
     public Text textTimer;
 
     public Player player;
+    public bool forceOn;
 
     protected bool _hasStarted;
 
@@ -101,7 +102,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if ( !player.bodyRenderer.isVisible ) return;
+        if ( !player.bodyRenderer.isVisible && !forceOn ) return;
 		System.TimeSpan t = System.TimeSpan.FromSeconds( spawnTime );
 		textTimer.text = string.Format("{0:D1}:{1:D2}", t.Minutes, t.Seconds);
 

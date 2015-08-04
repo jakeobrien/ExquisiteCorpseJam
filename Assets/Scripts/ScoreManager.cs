@@ -21,10 +21,6 @@ public class ScoreManager {
 	public static int Penalty() {
 		_score--;
 		
-		if ( _score < 0 ) {
-			_score = 0;
-		}
-		
 		if ( scoreChanged != null ) {
 			scoreChanged( _score );
 		}
@@ -32,6 +28,15 @@ public class ScoreManager {
 		return _score;
 	}
 	
+    public static void SetScore( int newScore )
+    {
+        _score = newScore;
+
+		if ( scoreChanged != null ) {
+			scoreChanged( _score );
+		}
+    }
+
 	public static int GetScore() {
 		return _score;
 	}
