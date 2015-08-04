@@ -11,9 +11,9 @@ GameObject:
   - 212: {fileID: 21297408}
   - 50: {fileID: 5062078}
   - 58: {fileID: 5815228}
-  - 114: {fileID: 11429618}
+  - 114: {fileID: 11454996}
   m_Layer: 0
-  m_Name: SpawnItem Green
+  m_Name: SpawnItem Red
   m_TagString: SpawnItem2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .5
---- !u!114 &11429618
+--- !u!114 &11454996
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c713b207507be4d8ca52dbc0e96f579d, type: 3}
-  m_Color: {r: 0, g: 1, b: .313725501, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
