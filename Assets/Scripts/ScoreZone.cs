@@ -25,7 +25,7 @@ public class ScoreZone : MonoBehaviour
     {
         Ball ball = other.transform.GetComponent<Ball>();
         if ( ball == null ) return;
-        if ( !ball.IsAttachedToPlayer() ) return;
+        if ( !ball.IsStickingToPlayer() ) return;
 
         if ( colorValue == ball.colorValue )
         {
